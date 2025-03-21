@@ -43,24 +43,36 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a 
-            href="/#services" 
-            className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors"
+          <Link 
+            to="/" 
+            className={`font-medium transition-colors ${
+              location.pathname === '/' 
+                ? 'text-hustlance-purple' 
+                : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+            }`}
           >
-            Services
-          </a>
-          <a 
-            href="/#how-it-works" 
-            className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors"
+            Home
+          </Link>
+          <Link 
+            to="/about" 
+            className={`font-medium transition-colors ${
+              location.pathname === '/about' 
+                ? 'text-hustlance-purple' 
+                : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+            }`}
           >
-            How It Works
-          </a>
-          <a 
-            href="/#testimonials" 
-            className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors"
+            About Us
+          </Link>
+          <Link 
+            to="/projects" 
+            className={`font-medium transition-colors ${
+              location.pathname.includes('/projects') 
+                ? 'text-hustlance-purple' 
+                : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+            }`}
           >
-            Testimonials
-          </a>
+            Our Projects
+          </Link>
           <Link 
             to="/contact" 
             className={`font-medium transition-colors ${
@@ -105,27 +117,39 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden glass absolute top-full left-0 w-full p-5 shadow-md border-t border-white/20 animate-fade-in">
           <div className="flex flex-col space-y-4">
-            <a 
-              href="/#services" 
-              className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors py-2"
+            <Link 
+              to="/" 
+              className={`font-medium transition-colors py-2 ${
+                location.pathname === '/' 
+                  ? 'text-hustlance-purple' 
+                  : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Services
-            </a>
-            <a 
-              href="/#how-it-works" 
-              className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors py-2"
+              Home
+            </Link>
+            <Link 
+              to="/about" 
+              className={`font-medium transition-colors py-2 ${
+                location.pathname === '/about' 
+                  ? 'text-hustlance-purple' 
+                  : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              How It Works
-            </a>
-            <a 
-              href="/#testimonials" 
-              className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors py-2"
+              About Us
+            </Link>
+            <Link 
+              to="/projects" 
+              className={`font-medium transition-colors py-2 ${
+                location.pathname.includes('/projects') 
+                  ? 'text-hustlance-purple' 
+                  : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+              }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Testimonials
-            </a>
+              Our Projects
+            </Link>
             <Link 
               to="/contact" 
               className={`font-medium transition-colors py-2 ${
