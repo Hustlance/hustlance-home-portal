@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,34 +33,44 @@ const Navbar = () => {
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <a 
-            href="/" 
+          <Link 
+            to="/" 
             className="text-2xl font-bold text-hustlance-dark-gray tracking-tight"
           >
             hustlance
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <a 
-            href="#services" 
+            href="/#services" 
             className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors"
           >
             Services
           </a>
           <a 
-            href="#how-it-works" 
+            href="/#how-it-works" 
             className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors"
           >
             How It Works
           </a>
           <a 
-            href="#testimonials" 
+            href="/#testimonials" 
             className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors"
           >
             Testimonials
           </a>
+          <Link 
+            to="/contact" 
+            className={`font-medium transition-colors ${
+              location.pathname === '/contact' 
+                ? 'text-hustlance-purple' 
+                : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+            }`}
+          >
+            Contact
+          </Link>
           <div className="flex items-center space-x-4">
             <a 
               href="/login" 
@@ -94,26 +106,37 @@ const Navbar = () => {
         <div className="md:hidden glass absolute top-full left-0 w-full p-5 shadow-md border-t border-white/20 animate-fade-in">
           <div className="flex flex-col space-y-4">
             <a 
-              href="#services" 
+              href="/#services" 
               className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </a>
             <a 
-              href="#how-it-works" 
+              href="/#how-it-works" 
               className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               How It Works
             </a>
             <a 
-              href="#testimonials" 
+              href="/#testimonials" 
               className="font-medium text-hustlance-dark-gray hover:text-hustlance-purple transition-colors py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               Testimonials
             </a>
+            <Link 
+              to="/contact" 
+              className={`font-medium transition-colors py-2 ${
+                location.pathname === '/contact' 
+                  ? 'text-hustlance-purple' 
+                  : 'text-hustlance-dark-gray hover:text-hustlance-purple'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
             <div className="pt-4 border-t border-gray-200">
               <a 
                 href="/login" 
